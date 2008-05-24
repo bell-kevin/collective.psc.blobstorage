@@ -21,8 +21,8 @@ class DummyBlobbableStringIO(BlobbableStringIO):
     adapts(StringIO)
 
     def mimetype(self):
-        """ see interface ... """
         return 'fake/mimetype'
+        
 provideAdapter(factory=DummyBlobbableStringIO)
 
 class TestCase(unittest.TestCase):            

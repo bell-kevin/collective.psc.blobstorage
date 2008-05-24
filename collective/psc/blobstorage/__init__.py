@@ -14,7 +14,6 @@ from Products.CMFDefault.interfaces import IFile
 from Products.PloneSoftwareCenter.storage.interfaces import IPSCFileStorage
 
 class BlobWrapper(BlobWrapper_):
-
     def manage_upload(self, data):
         if isinstance(data, basestring):
             data = StringIO(data)
@@ -35,7 +34,6 @@ class BlobWrapper(BlobWrapper_):
         
 
 class BlobField(BlobField_):
-   
     def set(self, instance, value, **kwargs):
         """ use input value to populate the blob and set the associated
             file name and mimetype """
@@ -58,11 +56,10 @@ class BlobField(BlobField_):
  
 
 class BlobStorage(object):
-    """adapts a field as a blob storage (dynamically)
-    """
-    name = 'blobstorage'
     implements(IPSCFileStorage)
-
+    title = u"Blob"
+    description = u"store releases using ZODB Blob Support (EXPERIMENTAL)"
+    
     def __init__(self, context):
         self.context = context
 
@@ -79,7 +76,6 @@ class BlobStorage(object):
         return field.get(instance, **kwargs)
 
     def set(self, name, instance, value, **kwargs):
-        
         if isinstance(value, File):
             directlyProvides(value, IFile)
             value.filename = name
@@ -90,8 +86,5 @@ class BlobStorage(object):
     def unset(self, name, instance, **kwargs):
         field = self._getStorage(name, instance)
         return field.unset(instance, **kwargs)
-
-    def getName(self, instance):
-        return self.name
 
 
