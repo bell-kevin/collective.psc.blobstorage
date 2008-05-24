@@ -91,7 +91,7 @@ class BlobStorage(object):
         field = self._getStorage(name, instance)
         return field.unset(instance, **kwargs)
 
-    def getName(self):
+    def getName(self, instance):
         return self.name
 
 
