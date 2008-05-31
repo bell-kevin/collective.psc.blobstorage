@@ -14,5 +14,6 @@
       />
 
   <adapter factory=".adapters.BlobbableFile" />
+  <adapter factory=".adapters.BlobbableFileUpload" />
 
 </configure>
