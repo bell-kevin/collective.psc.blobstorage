@@ -1,13 +1,13 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.0'
+version = '0.1.1'
 
 setup(name='collective.psc.blobstorage',
       version=version,
       description="Blob storage for PloneSoftwareCenter",
       long_description=open("README.txt").read() + '\n' +
-                       open("CHANGES.txt").read(),
+                       open(os.path.join("docs", "CHANGES.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
