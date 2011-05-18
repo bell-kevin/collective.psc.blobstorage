@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.2 - (unreleased)
+-------------------
+
+* Enabling zcml auto-include in setup.py
+  [erico_andrei]
+
 0.1.1 - 2011/05/12
 ------------------
 
