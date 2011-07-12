@@ -3,7 +3,7 @@ Changelog
 
 0.2 - (unreleased)
 -------------------
-
+* Fix in implementation of blob in __init__.py for Plone 4.0.7 [andreasma] 
 * Enabling zcml auto-include in setup.py
   [erico_andrei]
 
