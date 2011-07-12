@@ -42,14 +42,17 @@ class BlobField(BlobField_):
             return
         # create a new blob instead of modifying the old one to
         # achieve copy-on-write semantics.
-        blob = BlobWrapper()
+
         if isinstance(value, basestring):
             # make StringIO from string, because StringIO may be adapted to Blobabble
             value = StringIO(value)
         if value is not None:
             blobbable = IBlobbable(value)
+            #move blob ctor down to where we know the mimetype
+            blob = BlobWrapper(blobbable.mimetype())
             blobbable.feed(blob.getBlob())
             blob.setContentType(blobbable.mimetype())
+            
             blob.setFilename(blobbable.filename())
         ObjectField.set(self, instance, blob, **kwargs)
         self.fixAutoId(instance)
